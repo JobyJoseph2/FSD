@@ -1,0 +1,8 @@
+D:\LT036606\FSD\Joby\21-WCF\Calculator\SelfHosting\bin\Debug\SelfHosting.exe.config
+D:\LT036606\FSD\Joby\21-WCF\Calculator\SelfHosting\bin\Debug\SelfHosting.exe
+D:\LT036606\FSD\Joby\21-WCF\Calculator\SelfHosting\bin\Debug\SelfHosting.pdb
+D:\LT036606\FSD\Joby\21-WCF\Calculator\SelfHosting\bin\Debug\Calculator.dll
+D:\LT036606\FSD\Joby\21-WCF\Calculator\SelfHosting\bin\Debug\Calculator.pdb
+D:\LT036606\FSD\Joby\21-WCF\Calculator\SelfHosting\obj\Debug\SelfHosting.csprojResolveAssemblyReference.cache
+D:\LT036606\FSD\Joby\21-WCF\Calculator\SelfHosting\obj\Debug\SelfHosting.exe
+D:\LT036606\FSD\Joby\21-WCF\Calculator\SelfHosting\obj\Debug\SelfHosting.pdb

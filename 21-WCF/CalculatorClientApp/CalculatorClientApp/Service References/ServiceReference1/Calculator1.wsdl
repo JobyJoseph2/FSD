@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:i0="http://schemas.microsoft.com/ws/2005/02/mex/bindings" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Calculator" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:import namespace="http://schemas.microsoft.com/ws/2005/02/mex/bindings" location="http://localhost:5002/Calculator.svc?wsdl=wsdl0" />
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:5002/Calculator.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:5002/Calculator.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:5002/Calculator.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Calculator" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ICalculator_TodayProgram_InputMessage">
+    <wsdl:part name="parameters" element="tns:TodayProgram" />
+  </wsdl:message>
+  <wsdl:message name="ICalculator_TodayProgram_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TodayProgramResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICalculator_OpeningJobs_InputMessage">
+    <wsdl:part name="parameters" element="tns:OpeningJobs" />
+  </wsdl:message>
+  <wsdl:message name="ICalculator_OpeningJobs_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OpeningJobsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICalculator_OpeningJobsByRole_InputMessage">
+    <wsdl:part name="parameters" element="tns:OpeningJobsByRole" />
+  </wsdl:message>
+  <wsdl:message name="ICalculator_OpeningJobsByRole_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OpeningJobsByRoleResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICalculator_Add_InputMessage">
+    <wsdl:part name="parameters" element="tns:Add" />
+  </wsdl:message>
+  <wsdl:message name="ICalculator_Add_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICalculator_Subtract_InputMessage">
+    <wsdl:part name="parameters" element="tns:Subtract" />
+  </wsdl:message>
+  <wsdl:message name="ICalculator_Subtract_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SubtractResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICalculator_Multiply_InputMessage">
+    <wsdl:part name="parameters" element="tns:Multiply" />
+  </wsdl:message>
+  <wsdl:message name="ICalculator_Multiply_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MultiplyResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICalculator_Divide_InputMessage">
+    <wsdl:part name="parameters" element="tns:Divide" />
+  </wsdl:message>
+  <wsdl:message name="ICalculator_Divide_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DivideResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICalculator_SayHello_InputMessage">
+    <wsdl:part name="parameters" element="tns:SayHello" />
+  </wsdl:message>
+  <wsdl:message name="ICalculator_SayHello_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SayHelloResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ICalculator">
+    <wsdl:operation name="TodayProgram">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICalculator/TodayProgram" message="tns:ICalculator_TodayProgram_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICalculator/TodayProgramResponse" message="tns:ICalculator_TodayProgram_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OpeningJobs">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICalculator/OpeningJobs" message="tns:ICalculator_OpeningJobs_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICalculator/OpeningJobsResponse" message="tns:ICalculator_OpeningJobs_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OpeningJobsByRole">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICalculator/OpeningJobsByRole" message="tns:ICalculator_OpeningJobsByRole_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICalculator/OpeningJobsByRoleResponse" message="tns:ICalculator_OpeningJobsByRole_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Add">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICalculator/Add" message="tns:ICalculator_Add_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICalculator/AddResponse" message="tns:ICalculator_Add_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Subtract">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICalculator/Subtract" message="tns:ICalculator_Subtract_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICalculator/SubtractResponse" message="tns:ICalculator_Subtract_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Multiply">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICalculator/Multiply" message="tns:ICalculator_Multiply_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICalculator/MultiplyResponse" message="tns:ICalculator_Multiply_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Divide">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICalculator/Divide" message="tns:ICalculator_Divide_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICalculator/DivideResponse" message="tns:ICalculator_Divide_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SayHello">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICalculator/SayHello" message="tns:ICalculator_SayHello_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICalculator/SayHelloResponse" message="tns:ICalculator_SayHello_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ICalculator" type="tns:ICalculator">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="TodayProgram">
+      <soap:operation soapAction="http://tempuri.org/ICalculator/TodayProgram" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OpeningJobs">
+      <soap:operation soapAction="http://tempuri.org/ICalculator/OpeningJobs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OpeningJobsByRole">
+      <soap:operation soapAction="http://tempuri.org/ICalculator/OpeningJobsByRole" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Add">
+      <soap:operation soapAction="http://tempuri.org/ICalculator/Add" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Subtract">
+      <soap:operation soapAction="http://tempuri.org/ICalculator/Subtract" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Multiply">
+      <soap:operation soapAction="http://tempuri.org/ICalculator/Multiply" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Divide">
+      <soap:operation soapAction="http://tempuri.org/ICalculator/Divide" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SayHello">
+      <soap:operation soapAction="http://tempuri.org/ICalculator/SayHello" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Calculator">
+    <wsdl:port name="BasicHttpBinding_ICalculator" binding="tns:BasicHttpBinding_ICalculator">
+      <soap:address location="http://localhost:5002/Calculator.svc" />
+    </wsdl:port>
+    <wsdl:port name="MetadataExchangeHttpBinding_ICalculator" binding="i0:MetadataExchangeHttpBinding_ICalculator">
+      <soap12:address location="http://localhost:5002/Calculator.svc/mex" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>http://localhost:5002/Calculator.svc/mex</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

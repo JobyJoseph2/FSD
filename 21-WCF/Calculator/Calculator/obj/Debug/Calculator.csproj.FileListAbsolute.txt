@@ -1,0 +1,6 @@
+D:\LT036606\FSD\Joby\21-WCF\Calculator\Calculator\bin\Calculator.dll.config
+D:\LT036606\FSD\Joby\21-WCF\Calculator\Calculator\bin\Calculator.dll
+D:\LT036606\FSD\Joby\21-WCF\Calculator\Calculator\bin\Calculator.pdb
+D:\LT036606\FSD\Joby\21-WCF\Calculator\Calculator\obj\Debug\Calculator.dll
+D:\LT036606\FSD\Joby\21-WCF\Calculator\Calculator\obj\Debug\Calculator.pdb
+D:\LT036606\FSD\Joby\21-WCF\Calculator\Calculator\obj\Debug\Calculator.csprojResolveAssemblyReference.cache
