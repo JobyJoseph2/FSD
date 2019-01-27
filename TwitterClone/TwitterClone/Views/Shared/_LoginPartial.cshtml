@@ -1,0 +1,23 @@
+﻿@ViewBag.IsAuthenticated = "";
+@if (ViewBag.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <ul class="nav navbar-nav navbar-right">
+            <li>@Html.ActionLink("Welcome " + (string)ViewBag.FullName + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</li>
+            <li>@Html.ActionLink("Home", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+            <li>@Html.ActionLink("Signout", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+            
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+        </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Signup", "Create", "People", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Log in", "Login", "People", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}

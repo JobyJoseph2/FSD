@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TwitterCloneDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TwitterCloneDB.dbo.FOLLOWING' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="FOLLOWING">
+          <Key>
+            <PropertyRef Name="user_id" />
+            <PropertyRef Name="following_id" />
+          </Key>
+          <Property Name="user_id" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="following_id" Type="varchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PERSON">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="fullName" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="joined" Type="datetime" Nullable="false" />
+          <Property Name="active" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TwitterCloneDB.dbo.TWEET' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TWEET">
+          <Key>
+            <PropertyRef Name="tweet_id" />
+            <PropertyRef Name="user_id" />
+            <PropertyRef Name="message" />
+            <PropertyRef Name="created" />
+          </Key>
+          <Property Name="tweet_id" Type="int" Nullable="false" />
+          <Property Name="user_id" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="message" Type="varchar" MaxLength="140" Nullable="false" />
+          <Property Name="created" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_FOLLOWING_PERSON">
+          <End Role="PERSON" Type="Self.PERSON" Multiplicity="1" />
+          <End Role="FOLLOWING" Type="Self.FOLLOWING" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERSON">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="FOLLOWING">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FOLLOWING_PERSON1">
+          <End Role="PERSON" Type="Self.PERSON" Multiplicity="1" />
+          <End Role="FOLLOWING" Type="Self.FOLLOWING" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERSON">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="FOLLOWING">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TWEET_PERSON">
+          <End Role="PERSON" Type="Self.PERSON" Multiplicity="1" />
+          <End Role="TWEET" Type="Self.TWEET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERSON">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="TWEET">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TwitterCloneDBModelStoreContainer">
+          <EntitySet Name="PERSON" EntityType="Self.PERSON" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FOLLOWING" EntityType="Self.FOLLOWING" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [FOLLOWING].[user_id] AS [user_id], 
+    [FOLLOWING].[following_id] AS [following_id]
+    FROM [dbo].[FOLLOWING] AS [FOLLOWING]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TWEET" EntityType="Self.TWEET" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TWEET].[tweet_id] AS [tweet_id], 
+    [TWEET].[user_id] AS [user_id], 
+    [TWEET].[message] AS [message], 
+    [TWEET].[created] AS [created]
+    FROM [dbo].[TWEET] AS [TWEET]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_FOLLOWING_PERSON" Association="Self.FK_FOLLOWING_PERSON">
+            <End Role="PERSON" EntitySet="PERSON" />
+            <End Role="FOLLOWING" EntitySet="FOLLOWING" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FOLLOWING_PERSON1" Association="Self.FK_FOLLOWING_PERSON1">
+            <End Role="PERSON" EntitySet="PERSON" />
+            <End Role="FOLLOWING" EntitySet="FOLLOWING" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TWEET_PERSON" Association="Self.FK_TWEET_PERSON">
+            <End Role="PERSON" EntitySet="PERSON" />
+            <End Role="TWEET" EntitySet="TWEET" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TwitterCloneDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="PERSON">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fullName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="joined" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="FOLLOWINGs" Relationship="Self.FK_FOLLOWING_PERSON" FromRole="PERSON" ToRole="FOLLOWING" />
+          <NavigationProperty Name="FOLLOWINGs1" Relationship="Self.FK_FOLLOWING_PERSON1" FromRole="PERSON" ToRole="FOLLOWING" />
+          <NavigationProperty Name="TWEETs" Relationship="Self.FK_TWEET_PERSON" FromRole="PERSON" ToRole="TWEET" />
+        </EntityType>
+        <EntityType Name="FOLLOWING">
+          <Key>
+            <PropertyRef Name="user_id" />
+            <PropertyRef Name="following_id" />
+          </Key>
+          <Property Name="user_id" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="following_id" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="PERSON" Relationship="Self.FK_FOLLOWING_PERSON" FromRole="FOLLOWING" ToRole="PERSON" />
+          <NavigationProperty Name="PERSON1" Relationship="Self.FK_FOLLOWING_PERSON1" FromRole="FOLLOWING" ToRole="PERSON" />
+        </EntityType>
+        <EntityType Name="TWEET">
+          <Key>
+            <PropertyRef Name="tweet_id" />
+            <PropertyRef Name="user_id" />
+            <PropertyRef Name="message" />
+            <PropertyRef Name="created" />
+          </Key>
+          <Property Name="tweet_id" Type="Int32" Nullable="false" />
+          <Property Name="user_id" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="message" Type="String" MaxLength="140" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="created" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="PERSON" Relationship="Self.FK_TWEET_PERSON" FromRole="TWEET" ToRole="PERSON" />
+        </EntityType>
+        <Association Name="FK_FOLLOWING_PERSON">
+          <End Role="PERSON" Type="Self.PERSON" Multiplicity="1" />
+          <End Role="FOLLOWING" Type="Self.FOLLOWING" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERSON">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="FOLLOWING">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FOLLOWING_PERSON1">
+          <End Role="PERSON" Type="Self.PERSON" Multiplicity="1" />
+          <End Role="FOLLOWING" Type="Self.FOLLOWING" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERSON">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="FOLLOWING">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TWEET_PERSON">
+          <End Role="PERSON" Type="Self.PERSON" Multiplicity="1" />
+          <End Role="TWEET" Type="Self.TWEET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERSON">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="TWEET">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TwitterCloneDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="People" EntityType="Self.PERSON" />
+          <EntitySet Name="FOLLOWINGs" EntityType="Self.FOLLOWING" />
+          <EntitySet Name="TWEETs" EntityType="Self.TWEET" />
+          <AssociationSet Name="FK_FOLLOWING_PERSON" Association="Self.FK_FOLLOWING_PERSON">
+            <End Role="PERSON" EntitySet="People" />
+            <End Role="FOLLOWING" EntitySet="FOLLOWINGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FOLLOWING_PERSON1" Association="Self.FK_FOLLOWING_PERSON1">
+            <End Role="PERSON" EntitySet="People" />
+            <End Role="FOLLOWING" EntitySet="FOLLOWINGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TWEET_PERSON" Association="Self.FK_TWEET_PERSON">
+            <End Role="PERSON" EntitySet="People" />
+            <End Role="TWEET" EntitySet="TWEETs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TwitterCloneDBModelStoreContainer" CdmEntityContainer="TwitterCloneDBEntities">
+          <EntitySetMapping Name="People">
+            <EntityTypeMapping TypeName="TwitterCloneDBModel.PERSON">
+              <MappingFragment StoreEntitySet="PERSON">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="fullName" ColumnName="fullName" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="joined" ColumnName="joined" />
+                <ScalarProperty Name="active" ColumnName="active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FOLLOWINGs">
+            <EntityTypeMapping TypeName="TwitterCloneDBModel.FOLLOWING">
+              <MappingFragment StoreEntitySet="FOLLOWING">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="following_id" ColumnName="following_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TWEETs">
+            <EntityTypeMapping TypeName="TwitterCloneDBModel.TWEET">
+              <MappingFragment StoreEntitySet="TWEET">
+                <ScalarProperty Name="tweet_id" ColumnName="tweet_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="message" ColumnName="message" />
+                <ScalarProperty Name="created" ColumnName="created" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
